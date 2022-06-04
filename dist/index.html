@@ -21,6 +21,123 @@
     
     </div>
     
+    <div class="">
+    	<div class="time-days">
+    		00
+    	</div>
+    	<div class="text-days">
+    		дни
+    	</div>
+    	<div class="time-hours">
+    		00
+    	</div>
+    	<div class="text-hours">
+    		чесы
+    	</div>
+    	<div class="time-minets">
+    		00
+    	</div>
+    	<div class="text-minets">
+    		минуты
+    	</div>
+    	<div class="time-seconds">
+    		00
+    	</div>
+    	<div class="text-seconds">
+    		секунды
+    	</div>
+    </div>
+    <script>
+    	// таймер
+    
+    	// expirationDate - дата окончания таймера в фоммате 'Jan 1 2024 00:00:00'
+    	// days - наименования класса блока отоброжения дня
+    	// hours - наименования класса блока отоброжения часа
+    	// minutes - наименования класса блока отоброжения минуты
+    	// seconds - наименования класса блока отоброжения секунды
+    	// daysText - наименования класса блока отоброжения склонения дня
+    	// hoursText - наименования класса блока отоброжения склонения  часа
+    	// minutesText - наименования класса блока отоброжения склонения  минуты
+    	// secondsText - наименования класса блока отоброжения склонения  секунды
+    
+    	function timerDay(expirationDate, days, hours, minutes, daysText, hoursText, minutesText) {
+    		document.addEventListener('DOMContentLoaded', () => {
+    			const expDate = new Date(expirationDate);
+    
+    			const daysVall = document.querySelector(`${days}`);
+    			const hoursVall = document.querySelector(`${hours}`);
+    			const minutesVall = document.querySelector(`${minutes}`);
+    
+    			const dayText = document.querySelector(`${daysText}`);
+    			const hourText = document.querySelector(`${hoursText}`);
+    			const minuteText = document.querySelector(`${minutesText}`);
+    
+    			// склонение дней
+    			function declOfNum(number, titles) {
+    				let cases = [2, 0, 1, 1, 1, 2];
+    				return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
+    			}
+    
+    			const timeCount = () => {
+    				let now = new Date();
+    				// остаток времени до окончания таймера
+    				let leftUntil = expDate - now;
+    				// перевод в дни
+    				let days = Math.floor(leftUntil / 1000 / 60 / 60 / 24);
+    
+    				// перевод в часы
+    				let hours = Math.floor(leftUntil / 1000 / 60 / 60) % 24;
+    
+    				// перевод в минуты
+    				let minutes = Math.floor(leftUntil / 1000 / 60) % 60;
+    
+    				if (leftUntil >= 0) {
+    					if (days < 10) {
+    						daysVall.textContent = `0${days}`;
+    
+    					} else if (days >= 10) {
+    						daysVall.textContent = days;
+    
+    					}
+    
+    					if (hours < 10) {
+    						hoursVall.textContent = `0${hours}`;
+    					} else if (hours >= 10) {
+    						hoursVall.textContent = hours;
+    					}
+    
+    					if (minutes < 10) {
+    						minutesVall.textContent = `0${minutes}`;
+    					} else if (minutes >= 10) {
+    						minutesVall.textContent = minutes;
+    					}
+    
+    					dayText.textContent = declOfNum(days, ['день', 'дня', 'дней']);
+    					hourText.textContent = declOfNum(hours, ['час', 'часа', 'часов']);
+    					minuteText.textContent = declOfNum(minutes, ['минута', 'минуты', 'минут']);
+    
+    				} else if (leftUntil < 0) {
+    
+    					daysVall.textContent = `00`;
+    					hoursVall.textContent = `00`;
+    					minutesVall.textContent = `00`;
+    
+    					dayText.textContent = 'дней';
+    					hourText.textContent = 'часов';
+    					minuteText.textContent = 'минут';
+    				}
+    
+    			}
+    
+    			setInterval(timeCount, 1000)
+    
+    		})
+    	}
+    
+    	timerDay('sept 12 2022 20:35:00', '.time-days', '.time-hours', '.time-minets', '.text-days', '.text-hours', '.text-minets');
+    
+    </script>
+    
 </body>
 <script src="assets/js/app.min.js"></script>
 
