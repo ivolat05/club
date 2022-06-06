@@ -59,4 +59,27 @@ $(function () {
 	});
 
 
+	//popup close
+	function closePopup(closeBtn) {
+		let popupClose = document.querySelectorAll(`.${closeBtn}`);
+		if (popupClose) {
+			popupClose.forEach((item) => {
+				item.addEventListener('click', () => {
+					$.magnificPopup.close();
+				})
+			})
+		}
+
+
+	}
+
+	closePopup('popup-close');
+
+	// popup
+
+	$('.popup-open').magnificPopup({
+		type: 'inline',
+		mainClass: 'mfp-fade'
+	});
+
 })
