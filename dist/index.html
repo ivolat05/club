@@ -17,7 +17,7 @@
 
 <body>
     
-    <div class="page">
+    <div id="top" class="page">
     	<header class="header">
     		<div class="container">
     			<nav class="header-nav">
@@ -575,6 +575,43 @@
     			</p>
     		</div>
     	</section>
+    	<section class="map map-padding">
+    	
+    	
+    		<div class="container">
+    	
+    			<h3 class="map-title">
+    				Дата и место проведения
+    			</h3>
+    			<p class="map-text">
+    				Конференция “HR и охрана труда в строительстве 2022” пройдет <span>22-23 сентября 2022</span> г в
+    				конгресс-центре Golden
+    				Ring Hotel*****, по адресу: <span>Москва, ул. Смоленская, 5</span> . Ближайшая станция метро: Смоленская
+    				(5-10 мин от
+    				метро пешком). После <a href="#" class="map-link">регистрации </a> с Вами свяжется менеджер и вышлет Счет за
+    				участие. Вход по Электронным билетам, которые высылаются после оплаты. Закрывающие документы предоставляются
+    				при аккредитации.
+    	
+    			</p>
+    			<div id="map"></div>
+    		</div>
+    	</section>
+    	<div class="button-row">
+    		<a href="#top" class="button-top scroll-link">
+    			<svg width="24" height="33" viewBox="0 0 24 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+    				<path
+    					d="M0.856866 11.3431L3.11961 13.6059L10.5697 6.15581L10.5697 32.3697L13.7715 32.3697L13.7715 6.15581L21.2215 13.6059L23.4843 11.3431L12.1706 0.0294375L0.856866 11.3431Z"
+    					fill="white" />
+    			</svg>
+    		</a>
+    		<a href="#top" class="button-top scroll-link">
+    			<svg width="24" height="33" viewBox="0 0 24 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+    				<path
+    					d="M0.856866 11.3431L3.11961 13.6059L10.5697 6.15581L10.5697 32.3697L13.7715 32.3697L13.7715 6.15581L21.2215 13.6059L23.4843 11.3431L12.1706 0.0294375L0.856866 11.3431Z"
+    					fill="white" />
+    			</svg>
+    		</a>
+    	</div>
     </div>
     
     
@@ -666,7 +703,55 @@
     	}
     
     	timerDay('sept 12 2022 20:35:00', '.time-days', '.time-hours', '.time-minets', '.text-days', '.text-hours', '.text-minets');
+    	// map
     
+    </script>
+    <!--map-->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU" type="text/javascript">
+    </script>
+    <script>
+    	// Функция ymaps.ready() будет вызвана, когда
+    	// загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+    	ymaps.ready(init);
+    	function init() {
+    		// Создание карты.
+    		var myMap = new ymaps.Map("map", {
+    			// Координаты центра карты.
+    			// Порядок по умолчанию: «широта, долгота».
+    			// Чтобы не определять координаты центра карты вручную,
+    			// воспользуйтесь инструментом Определение координат.
+    			center: [55.751574, 37.573856],
+    
+    			// Уровень масштабирования. Допустимые значения:
+    			// от 0 (весь мир) до 19.
+    			zoom: 9,
+    			controls: []
+    		});
+    		myMap.behaviors.disable('scrollZoom')
+    		myPlacemarkWithContent = new ymaps.Placemark([55.661574, 37.573856], {
+    			hintContent: 'Собственный значок метки с контентом',
+    			balloonContent: 'А эта — новогодняя',
+    			iconContent: '12'
+    		}, {
+    			// Опции.
+    			// Необходимо указать данный тип макета.
+    			iconLayout: 'default#imageWithContent',
+    			// Своё изображение иконки метки.
+    			iconImageHref: '../../assets/img/map/marker-2.svg',
+    			// Размеры метки.
+    			iconImageSize: [50, 72],
+    			// Смещение левого верхнего угла иконки относительно
+    			// её "ножки" (точки привязки).
+    			iconImageOffset: [-33, -118],
+    			// Смещение слоя с содержимым относительно слоя с картинкой.
+    			iconContentOffset: [],
+    			// Макет содержимого.
+    
+    		});
+    
+    		myMap.geoObjects
+    			.add(myPlacemarkWithContent);
+    	}
     </script>
     
 </body>
