@@ -23,32 +23,32 @@
 				<nav class="header-nav">
 					<ul class="headernav-list">
 						<li class="nav-list-inner">
-							<a href="#" class="header-list-link">
+							<a href="#events" class="header-list-link scroll-link">
 								О конференции
 							</a>
 						</li>
 						<li class="nav-list-inner">
-							<a href="#" class="header-list-link">
+							<a href="#topic" class="header-list-link scroll-link">
 								Тематика
 							</a>
 						</li>
 						<li class="nav-list-inner">
-							<a href="#" class="header-list-link">
+							<a href="#speaker" class="header-list-link scroll-link">
 								Спикеры
 							</a>
 						</li>
 						<li class="nav-list-inner">
-							<a href="#" class="header-list-link">
+							<a href="#speaker" class="header-list-link scroll-link">
 								Программа
 							</a>
 						</li>
 						<li class="nav-list-inner">
-							<a href="#" class="header-list-link">
+							<a href="#info" class="header-list-link scroll-link">
 								Стоимость участия
 							</a>
 						</li>
 						<li class="nav-list-inner">
-							<a href="#" class="header-list-link">
+							<a href="#maps" class="header-list-link scroll-link">
 								Дата и Место проведения
 							</a>
 						</li>
@@ -166,7 +166,7 @@
 				<div class="main-fon"></div>
 			</div>
 		</main>
-		<section class="events events-padding">
+		<section id="events" class="events events-padding">
 			<div class="container">
 				<h3 class="title events-title">
 					О конференции
@@ -232,7 +232,7 @@
 		
 			</div>
 		</section>
-		<section class="topic topic-padding">
+		<section id="topic" class="topic topic-padding">
 			<div class="container topic-container">
 				<h3 class="title topic-title">
 					Темы
@@ -320,7 +320,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="speaker speaker-padding">
+		<section id="speaker" class="speaker speaker-padding">
 			<div class="container">
 				<h3 class="title speaker-title">
 					Спикеры
@@ -407,7 +407,7 @@
 					</div>
 		
 				</div>
-				<div class="speaker-info">
+				<div id="info" class="speaker-info">
 					<div class="speaker-info-col">
 						<h3 class="title speaker-info-title">
 							Стоимость участия
@@ -557,17 +557,17 @@
 				<h3 class="news-title">
 					Новости конференции
 				</h3>
-				<h3 class="news-subtitle">
+				<a href="#" class="news-subtitle">
 					Узнайте актуальные тренды на рынке труда стройотрасли
-				</h3>
+				</a>
 				<p class="news-text">
 					Участие в Форуме Building Skin Russia 2020 можно по праву приравнять к прохождению краткого курса повышения
 					квалификации в области внешних оболочек современных зданий: фасадов, кровель, окон, изоляции, стеновых
 					систем.
 				</p>
-				<h3 class="news-subtitle">
+				<a href="#" class="news-subtitle">
 					Узнайте актуальные тренды на рынке труда стройотрасли
-				</h3>
+				</a>
 				<p class="news-text">
 					Участие в Форуме Building Skin Russia 2020 можно по праву приравнять к прохождению краткого курса повышения
 					квалификации в области внешних оболочек современных зданий: фасадов, кровель, окон, изоляции, стеновых
@@ -575,7 +575,7 @@
 				</p>
 			</div>
 		</section>
-		<section class="map map-padding">
+		<section id="maps" class="map map-padding">
 		
 		
 			<div class="container">
@@ -710,7 +710,7 @@
 				<input class="form-input" type="tel" name="name" placeholder="Телефон" />
 				<p class="form-text">
 					Участие платное.
-					<a href="#" class="form-link">
+					<a href="#info" class="form-link  scroll-link close">
 						Условия участия
 					</a>
 				</p>
@@ -898,9 +898,9 @@
 				controls: []
 			});
 			myMap.behaviors.disable('scrollZoom')
-			myPlacemarkWithContent = new ymaps.Placemark([55.661574, 37.573856], {
-				hintContent: 'Собственный значок метки с контентом',
-				balloonContent: 'А эта — новогодняя',
+			myPlacemarkWithContent = new ymaps.Placemark([55.751574, 37.573856], {
+				hintContent: 'r.Москва, ул. Смоленская, 5.',
+				balloonContent: 'r.Москва, ул. Смоленская, 5.',
 				iconContent: '12'
 			}, {
 				// Опции.

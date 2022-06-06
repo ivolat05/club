@@ -74,6 +74,7 @@ $(function () {
 	}
 
 	closePopup('popup-close');
+	closePopup('close');
 
 	// popup
 
