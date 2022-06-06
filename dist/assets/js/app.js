@@ -17,7 +17,7 @@ $(function () {
 				let scrollDistanse = window.scrollY;
 				if (scrollDistanse > summHead) {
 					buttonPosition.style.opacity = '1';
-					buttonPosition.style.zIndex = '0';
+					buttonPosition.style.zIndex = '1';
 				} else {
 					buttonPosition.style.opacity = '0	';
 					buttonPosition.style.zIndex = '-4';
@@ -46,9 +46,18 @@ $(function () {
 		nextArrow: $(".contacts__slick-next"),
 		prevArrow: $(".contacts__slick-prev"),
 		responsive: [
+			{
+				breakpoint: 992,
+				settings: {
+					slidesToShow: 2,
+					arrows: true,
+					slidesToScroll: 1
+
+				}
+			},
 
 			{
-				breakpoint: 998,
+				breakpoint: 550,
 				settings: {
 					slidesToShow: 1,
 					arrows: true,
@@ -83,4 +92,56 @@ $(function () {
 		mainClass: 'mfp-fade'
 	});
 
+	// open mob menu
+	function mobMenu() {
+		let headerBtnMob = document.querySelector('.header-btn-mob');
+		let mobClose = document.querySelector('.mob-close');
+		let body = document.querySelector('body');
+		let fon = document.querySelector('.fon');
+		let headerListLink = document.querySelectorAll('.header-list-link');
+		let headerNav = document.querySelector('.header-nav');
+		if (headerBtnMob && mobClose && headerNav && body) {
+			headerBtnMob.addEventListener('click', () => {
+				body.classList.add('stop');
+				headerNav.classList.add('active');
+				fon.classList.add('active');
+			})
+			headerListLink.forEach(item => {
+				item.addEventListener('click', () => {
+					if (body.classList.contains('stop')) {
+						body.classList.remove('stop');
+					}
+					if (fon.classList.contains('active')) {
+						fon.classList.remove('active');
+					}
+					if (headerNav.classList.contains('active')) {
+						headerNav.classList.remove('active');
+					}
+				})
+			})
+			fon.addEventListener('click', () => {
+				if (body.classList.contains('stop')) {
+					body.classList.remove('stop');
+				}
+				if (fon.classList.contains('active')) {
+					fon.classList.remove('active');
+				}
+				if (headerNav.classList.contains('active')) {
+					headerNav.classList.remove('active');
+				}
+			})
+			mobClose.addEventListener('click', () => {
+				if (body.classList.contains('stop')) {
+					body.classList.remove('stop');
+				}
+				if (fon.classList.contains('active')) {
+					fon.classList.remove('active');
+				}
+				if (headerNav.classList.contains('active')) {
+					headerNav.classList.remove('active');
+				}
+			})
+		}
+	}
+	mobMenu()
 })
