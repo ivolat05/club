@@ -387,6 +387,8 @@
 		}
 	</style>
 	<link rel="stylesheet" href="assets/css/style.min.css">
+	<link rel="preconnect" href="//api-maps.yandex.ru">
+	<link rel="dns-prefetch" href="//api-maps.yandex.ru">
 </head>
 
 <body>
@@ -1281,6 +1283,64 @@
 	
 	</script>
 	<!--map-->
+	
+	
+	<script>
+		setTimeout(function () {
+			var elem = document.createElement('script');
+			elem.type = 'text/javascript';
+			elem.src = "//api-maps.yandex.ru/2.1/?apikey=вашAPI-ключ&lang=ru_RU	& amp; width = 100 % 25 & amp; height = 430 & amp; lang = ru_RU & amp; scroll = true";
+			document.getElementById('map').appendChild(elem);
+		}, 3000);
+	</script>
+	
+	<script>
+	
+		setTimeout(function () {
+			// Функция ymaps.ready() будет вызвана, когда
+			// загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+			ymaps.ready(init);
+			function init() {
+				// Создание карты.
+				var myMap = new ymaps.Map("map", {
+					// Координаты центра карты.
+					// Порядок по умолчанию: «широта, долгота».
+					// Чтобы не определять координаты центра карты вручную,
+					// воспользуйтесь инструментом Определение координат.
+					center: [55.745291, 37.580535],
+	
+					// Уровень масштабирования. Допустимые значения:
+					// от 0 (весь мир) до 19.
+					zoom: 15,
+					controls: []
+				});
+				myMap.behaviors.disable('scrollZoom')
+				myPlacemarkWithContent = new ymaps.Placemark([55.745291, 37.580535], {
+					hintContent: 'r.Москва, ул. Смоленская, 5.',
+					balloonContent: 'r.Москва, ул. Смоленская, 5.',
+					iconContent: '12'
+				}, {
+					// Опции.
+					// Необходимо указать данный тип макета.
+					iconLayout: 'default#imageWithContent',
+					// Своё изображение иконки метки.
+					iconImageHref: './assets/img/map/marker-2.svg',
+					// Размеры метки.
+					iconImageSize: [50, 72],
+					// Смещение левого верхнего угла иконки относительно
+					// её "ножки" (точки привязки).
+					iconImageOffset: [-25, -70],
+					// Смещение слоя с содержимым относительно слоя с картинкой.
+					iconContentOffset: [],
+					// Макет содержимого.
+	
+				});
+	
+				myMap.geoObjects
+					.add(myPlacemarkWithContent);
+			}
+		}, 6000);
+	</script>
 	
 	<script src="assets/js/app.min.js" defer></script>
 </body>
